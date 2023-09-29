@@ -56,8 +56,8 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute z-10 flex justify-between w-full px-8 py-2 bg-gradient-to-b from-black">
-      <img className="w-44" src={LOGO} alt="logo" />
+    <div className="absolute z-10 flex flex-col justify-between w-full px-8 py-2 bg-gradient-to-b from-black md:flex-row">
+      <img className="mx-auto w-44 md:mx-0" src={LOGO} alt="logo" />
       {user && (
         <div className="flex items-center p-2">
           {showGptSearch && (
@@ -65,8 +65,10 @@ const Header = () => {
               className="px-3 py-2 m-2 text-white bg-gray-500 rounded-lg"
               onChange={handleLanguageChange}
             >
-              {SUPPORTED_LANGUAGES.map((lang) => (
-                <option value={lang.identifier}>{lang.name}</option>
+              {SUPPORTED_LANGUAGES.map((lang, index) => (
+                <option key={index} value={lang.identifier}>
+                  {lang.name}
+                </option>
               ))}
             </select>
           )}
